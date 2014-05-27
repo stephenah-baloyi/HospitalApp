@@ -58,34 +58,34 @@ public static ApplicationContext ctx;
      @Test
      public void readWard(){
          repo = ctx.getBean(WardRepository.class);
-         Ward ward = repo.findById(id);
+         Ward ward = repo.findOne(id);
          Assert.assertEquals("W1234", ward.getWardNum());
          
      }
      
     @Test
-     private void updateWard(){
+     public void updateWard(){
          repo = ctx.getBean(WardRepository.class);
                 
-         Ward ward = repo.findById(id);
+         Ward ward = repo.findOne(id);
          Ward updatedWard = new Ward.Builder("W1234")
                  .wardGender("Male")
                  .build();
         
          repo.save(updatedWard);
          
-         Ward newWard = repo.findById(id);
+         Ward newWard = repo.findOne(id);
          Assert.assertEquals("Male", newWard.getWardGender());
          
      }
      
      @Test
-     private void deleteWard(){
+     public void deleteWard(){
          repo = ctx.getBean(WardRepository.class);
-         Ward ward = repo.findById(id);
+         Ward ward = repo.findOne(id);
          repo.delete(ward);
          
-         Ward deletedWard = repo.findById(id);
+         Ward deletedWard = repo.findOne(id);
          
          Assert.assertNull(deletedWard);
          

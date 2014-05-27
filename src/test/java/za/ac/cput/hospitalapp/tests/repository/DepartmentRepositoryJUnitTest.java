@@ -73,17 +73,17 @@ public class DepartmentRepositoryJUnitTest {
      @Test
      public void readDepartment(){
          repo = ctx.getBean(DepartmentRepository.class);
-         Department dept = repo.findById(id);
+         Department dept = repo.findOne(id);
          Assert.assertEquals("D202", dept.getDeptID());
          
      }
      
     @Test
-     private void updateDepartment(){
+     public void updateDepartment(){
          
          repo = ctx.getBean(DepartmentRepository.class);
          
-         Department dept = repo.findById(id);
+         Department dept = repo.findOne(id);
          Department updatedDept = new Department.Builder("D202")
                  .department(dept)
                  .deptName("Physio")                 
@@ -91,18 +91,18 @@ public class DepartmentRepositoryJUnitTest {
         
          repo.save(updatedDept);
          
-         Department newDept = repo.findById(id);
+         Department newDept = repo.findOne(id);
          Assert.assertEquals("Physio", newDept.getDeptName());
          
      }
      
      @Test
-     private void deleteDepartment(){
+     public void deleteDepartment(){
          repo = ctx.getBean(DepartmentRepository.class);
-         Department dept = repo.findById(id);
+         Department dept = repo.findOne(id);
          repo.delete(dept);
          
-         Department deletedDept = repo.findById(id);
+         Department deletedDept = repo.findOne(id);
          
          Assert.assertNull(deletedDept);
          

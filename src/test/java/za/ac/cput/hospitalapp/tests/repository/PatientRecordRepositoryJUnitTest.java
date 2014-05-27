@@ -13,7 +13,6 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import za.ac.cput.hospitalapp.app.config.ConnectionConfig;
-import za.ac.cput.hospitalapp.domain.Name;
 import za.ac.cput.hospitalapp.domain.Patient_Record;
 import za.ac.cput.hospitalapp.repository.PatientRecordRepository;
 
@@ -63,35 +62,35 @@ public class PatientRecordRepositoryJUnitTest {
      @Test
      public void readPatientRecord(){
          repo = ctx.getBean(PatientRecordRepository.class);
-         Patient_Record record = repo.findById(id);
+         Patient_Record record = repo.findOne(id);
          Assert.assertEquals(record.getRecordNum(), "80869195");
          
      }
      
     @Test
-     private void updatePatientRecord(){
+     public void updatePatientRecord(){
          
          repo = ctx.getBean(PatientRecordRepository.class);
          
-         Patient_Record record = repo.findById(id);
+         Patient_Record record = repo.findOne(id);
          Patient_Record updatedRecord = new Patient_Record.Builder("80869195")
                  .amount(250.94)
                  .build();
         
          repo.save(updatedRecord);
          
-         Patient_Record newRecord = repo.findById(id);
+         Patient_Record newRecord = repo.findOne(id);
          Assert.assertEquals(250.94, newRecord.getAmount());
          
      }
      
      @Test
-     private void deletePatientRecord(){
+     public void deletePatientRecord(){
          repo = ctx.getBean(PatientRecordRepository.class);
-         Patient_Record record = repo.findById(id);
+         Patient_Record record = repo.findOne(id);
          repo.delete(record);
          
-         Patient_Record deletedRecord = repo.findById(id);
+         Patient_Record deletedRecord = repo.findOne(id);
          
          Assert.assertNull(deletedRecord);
          

@@ -48,7 +48,7 @@ public class PatientDetailsServiceJUnitTest {
         patientRepository = ctx.getBean(PatientRepository.class);
         patientDetailsService = ctx.getBean(PatientDetailsService.class);
                        
-        Patient p = patientRepository.findById(id);
+        Patient p = patientRepository.findOne(id);
         String name = patientDetailsService.getFullName(p.getId());
         Assert.assertEquals("Klaus" + "Salvatore", name);
                         

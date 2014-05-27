@@ -53,8 +53,8 @@ public class HospitalRepositoryJUnitTest {
      public void createHospital() {
          repo = ctx.getBean(HospitalRepository.class);
          
-        Ward ward = wardrepo.findById(id);
-        Department dept = deptrepo.findById(id);
+        Ward ward = wardrepo.findOne(id);
+        Department dept = deptrepo.findOne(id);
          
         Contact contact = new Contact();
         contact.setLandline("0215558479");
@@ -79,38 +79,38 @@ public class HospitalRepositoryJUnitTest {
      @Test
      public void readHospital(){
          repo = ctx.getBean(HospitalRepository.class);
-         Hospital hospital = repo.findById(id);
+         Hospital hospital = repo.findOne(id);
          Assert.assertEquals("Tyger", hospital.getName());
          
      }
      
     @Test
-     private void updateHospital(){
+     public void updateHospital(){
          
          repo = ctx.getBean(HospitalRepository.class);
         Contact contact = new Contact();
         contact.setLandline("0158899772");
         contact.setAddress("17 gousblom Street");
         
-         Hospital hospital = repo.findById(id);
+         Hospital hospital = repo.findOne(id);
          Hospital updatedHospital = new Hospital.Builder("Tyger")
                  .contact(contact)                 
                  .build();
         
          repo.save(updatedHospital);
          
-         Hospital newHospital = repo.findById(id);
+         Hospital newHospital = repo.findOne(id);
          Assert.assertEquals("0158899772" + "17 gousblom Street", newHospital.getContact());
          
      }
      
      @Test
-     private void deleteHospital(){
+     public void deleteHospital(){
          repo = ctx.getBean(HospitalRepository.class);
-         Hospital h = repo.findById(id);
+         Hospital h = repo.findOne(id);
          repo.delete(h);
          
-         Hospital deletedHospital = repo.findById(id);
+         Hospital deletedHospital = repo.findOne(id);
          
          Assert.assertNull(deletedHospital);
          

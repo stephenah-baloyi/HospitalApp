@@ -11,5 +11,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Mhumhu
  */
 public interface HospitalRepository extends JpaRepository<Hospital, Long>{
+
   
 }

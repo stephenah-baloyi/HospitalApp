@@ -41,11 +41,11 @@ public class ConnectionConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(
-            DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
+        DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
         LocalContainerEntityManagerFactoryBean lef = new LocalContainerEntityManagerFactoryBean();
         lef.setDataSource(dataSource);
         lef.setJpaVendorAdapter(jpaVendorAdapter);
-        //lef.packagesToScan("za.ac.cput.hospitalapp.domain");
+        lef.setPackagesToScan("za.ac.cput.hospitalapp.domain");
         return lef;
     }
 

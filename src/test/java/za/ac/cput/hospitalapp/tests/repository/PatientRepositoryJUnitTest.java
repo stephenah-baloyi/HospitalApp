@@ -82,20 +82,20 @@ public class PatientRepositoryJUnitTest {
      @Test
      public void readPatient(){
          repo = ctx.getBean(PatientRepository.class);
-         Patient patient = repo.findById(id);
+         Patient patient = repo.findOne(id);
          Assert.assertEquals(patient.getName(), "Rhulani");
          
      }
      
     @Test
-     private void updatePatient(){
+     public void updatePatient(){
          
          repo = ctx.getBean(PatientRepository.class);
          Name name = new Name();
         name.setFname("Stefan");
         name.setLname("Salvatore");
         
-         Patient patient = repo.findById(id);
+         Patient patient = repo.findOne(id);
          Patient updatedPatient = new Patient.Builder("80869195")
                  .patient(patient)
                  .name(name)
@@ -103,18 +103,18 @@ public class PatientRepositoryJUnitTest {
         
          repo.save(updatedPatient);
          
-         Patient newPatient = repo.findById(id);
+         Patient newPatient = repo.findOne(id);
          Assert.assertEquals("Stefan Salvatore", newPatient.getName());
          
      }
      
      @Test
-     private void deletePatient(){
+     public void deletePatient(){
          repo = ctx.getBean(PatientRepository.class);
-         Patient patient = repo.findById(id);
+         Patient patient = repo.findOne(id);
          repo.delete(patient);
          
-         Patient deletedPatient = repo.findById(id);
+         Patient deletedPatient = repo.findOne(id);
          
          Assert.assertNull(deletedPatient);
          

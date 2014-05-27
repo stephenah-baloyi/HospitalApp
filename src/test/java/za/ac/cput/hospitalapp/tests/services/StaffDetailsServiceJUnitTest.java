@@ -49,7 +49,7 @@ public class StaffDetailsServiceJUnitTest {
         staffRepository = ctx.getBean(StaffRepository.class);
         staffDetailsService = ctx.getBean(StaffDetailsService.class);
                        
-        Staff staff = staffRepository.findById(id);
+        Staff staff = staffRepository.findOne(id);
         String name = staffDetailsService.getFullName(staff.getId());
         Assert.assertEquals("Rhulani" + "Baloyi", name);
                 

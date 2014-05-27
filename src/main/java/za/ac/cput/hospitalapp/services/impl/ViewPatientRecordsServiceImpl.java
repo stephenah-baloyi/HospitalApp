@@ -30,7 +30,7 @@ public class ViewPatientRecordsServiceImpl implements ViewPatientRecordsService{
     @Override
     public List<Patient_Record> viewRecords(Patient Id, Long ID) {
                 
-        Patient_Record record = recordRepository.findById(ID);
+        Patient_Record record = recordRepository.findOne(ID);
         
         List<Patient_Record> records = new ArrayList();
         

@@ -30,13 +30,13 @@ public class HospitalDetailsServiceImpl implements HospitalDetailService{
 
     @Override
     public String getHospitalName(Long ID) {
-        Hospital hospital = hospitalRepository.findById(ID);
+        Hospital hospital = hospitalRepository.findOne(ID);
         return hospital.getName();
     }
 
     @Override
     public String getAddress(Long ID) {
-        Hospital hospital = hospitalRepository.findById(ID);
+        Hospital hospital = hospitalRepository.findOne(ID);
         Contact contact = hospital.getContact();
         return contact.getAddress();
     }

@@ -27,21 +27,21 @@ public class StaffDetailsImpl implements StaffDetailsService{
     @Override
     public String getFullName(Long staffId) {
         
-        Staff staff = staffRepository.findById(staffId);
+        Staff staff = staffRepository.findOne(staffId);
         Name name = staff.getName();
         return name.getFname() + " " + name.getLname();
     }
 
     @Override
     public String getTitle(Long staffId) {
-        Staff staff = staffRepository.findById(staffId);
+        Staff staff = staffRepository.findOne(staffId);
         return staff.getTitle();
     }
 
     @Override
     public String getContact(Long staffId) {
         
-        Staff staff = staffRepository.findById(staffId);
+        Staff staff = staffRepository.findOne(staffId);
         Contact contact = staff.getContact();
         return contact.getAddress() + " " + contact.getLandline()
                 + " " +contact.getCellnumber();

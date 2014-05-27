@@ -94,7 +94,7 @@ public class StaffRepositoryJUnitTest {
      @Test
      public void readStaff(){
          repo = ctx.getBean(StaffRepository.class);
-         Staff staff = repo.findById(id);
+         Staff staff = repo.findOne(id);
          Assert.assertEquals("Rhulani", staff.getName());
          
      }
@@ -107,14 +107,14 @@ public class StaffRepositoryJUnitTest {
         name.setFname("Stefan");
         name.setLname("Salvatore");
         
-         Staff staff = repo.findById(id);
+         Staff staff = repo.findOne(id);
          Staff updatedStaff = new Staff.Builder("210188200")
                  .name(name)                 
                  .build();
         
          repo.save(updatedStaff);
          
-         Staff newStaff = repo.findById(id);
+         Staff newStaff = repo.findOne(id);
          Assert.assertEquals("Stefan Baloyi", newStaff.getName());
          
      }
@@ -122,10 +122,10 @@ public class StaffRepositoryJUnitTest {
      @Test
      public void deleteStaff(){
          repo = ctx.getBean(StaffRepository.class);
-         Staff staff = repo.findById(id);
+         Staff staff = repo.findOne(id);
          repo.delete(staff);
          
-         Staff deletedStaff = repo.findById(id);
+         Staff deletedStaff = repo.findOne(id);
          
          Assert.assertNull(deletedStaff);
          

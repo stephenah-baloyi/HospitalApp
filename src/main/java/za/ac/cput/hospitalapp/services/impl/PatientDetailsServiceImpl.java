@@ -27,7 +27,7 @@ public class PatientDetailsServiceImpl implements PatientDetailsService{
     @Override
     public String getFullName(Long ID) {
         
-        Patient p = patientRepository.findById(ID);
+        Patient p = patientRepository.findOne(ID);
         Name name = p.getName();
         return name.getFname() + " " + name.getLname();
     }
@@ -35,14 +35,14 @@ public class PatientDetailsServiceImpl implements PatientDetailsService{
     @Override
     public String getContactNumbers(Long ID) {
         
-        Patient p = patientRepository.findById(ID);
+        Patient p = patientRepository.findOne(ID);
         Contact contact = p.getContact();
         return contact.getLandline() + " " +contact.getCellnumber();
     }
 
     @Override
     public String getAddress(Long ID) {
-        Patient p = patientRepository.findById(ID);
+        Patient p = patientRepository.findOne(ID);
         Contact contact = p.getContact();
         return contact.getAddress();
     }

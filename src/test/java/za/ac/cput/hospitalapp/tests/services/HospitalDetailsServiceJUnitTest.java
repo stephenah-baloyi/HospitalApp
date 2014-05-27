@@ -54,7 +54,7 @@ public class HospitalDetailsServiceJUnitTest {
         hospitalDetailsService = ctx.getBean(HospitalDetailService.class);
         deptRepository = ctx.getBean(DepartmentRepository.class);
                        
-        Hospital h = hospitalRepository.findById(id);
+        Hospital h = hospitalRepository.findOne(id);
         String name = hospitalDetailsService.getHospitalName(h.getId());
         Assert.assertEquals("Tyger", name);
                         

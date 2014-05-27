@@ -24,7 +24,7 @@ public class MakingAppointmentServiceImpl implements MakingAppointmentService{
     
     @Override
     public String makeAppointment(Long Id) {
-        Appointment app = appRepository.findById(Id);
+        Appointment app = appRepository.findOne(Id);
         
        return app.getAppointmentNum();
     }

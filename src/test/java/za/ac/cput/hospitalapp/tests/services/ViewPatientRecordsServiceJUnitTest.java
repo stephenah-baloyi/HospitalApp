@@ -53,7 +53,7 @@ public class ViewPatientRecordsServiceJUnitTest {
         recordrepo = ctx.getBean(PatientRecordRepository.class);
         patientrepo = ctx.getBean(PatientRepository.class);
         viewrecord = ctx.getBean(ViewPatientRecordsService.class);
-        Patient patient = patientrepo.findById(id);
+        Patient patient = patientrepo.findOne(id);
         
         List<Patient_Record> records = viewrecord.viewRecords(patient, id);
 
